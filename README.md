@@ -1,4 +1,4 @@
-# getx-scalability-structure-templates
+# flutter-getx-scalable-project-structure
 
 A new Flutter project.
 
