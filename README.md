@@ -17,16 +17,16 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Project structure
 lib
---config
---controllers
-----bindings
---extensions
---pages
---providers
-----database
-----network
--------apis
--------models
---repositories
---utilities
---widgets
+---config
+---controllers
+------bindings
+---extensions
+---pages
+---providers
+------database
+------network
+---------apis
+---------models
+---repositories
+---utilities
+---widgets
