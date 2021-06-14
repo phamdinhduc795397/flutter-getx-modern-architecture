@@ -1,6 +1,6 @@
 # flutter-getx-scalable-project-structure
 
-A new Flutter project.
+A Flutter GetX Structure for starter who need a base project, which applied in real project.
 
 ## Getting Started
 
