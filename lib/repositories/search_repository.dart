@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:fluttergetx/providers/network/apis/search_api.dart';
 import 'package:fluttergetx/providers/network/models/repo_model.dart';
 import 'package:fluttergetx/providers/network/models/user_model.dart';

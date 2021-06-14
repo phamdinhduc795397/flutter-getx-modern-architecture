@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:fluttergetx/controllers/search_user_controller.dart';
+import 'package:fluttergetx/controllers/search_user/search_user_controller.dart';
 import 'package:get/get.dart';
 
-class SearchUserPage extends StatelessWidget {
-  SearchUserPage({Key key, this.title}) : super(key: key);
+class SearchUserPage extends GetView<SearchUserController> {
+  SearchUserPage({Key? key, required this.title}) : super(key: key);
   final String title;
   final textController = TextEditingController(text: "");
 
@@ -18,12 +18,13 @@ class SearchUserPage extends StatelessWidget {
               Row(
                 children: [
                   Flexible(
-                      child: TextField(
-                    controller: textController,
-                  )),
+                    child: TextField(
+                      controller: textController,
+                    ),
+                  ),
                   TextButton(
                       onPressed: () {
-                        controller.searchRepo(textController.text);
+                        controller.search(textController.text);
                       },
                       child: Icon(Icons.search))
                 ],
@@ -33,7 +34,7 @@ class SearchUserPage extends StatelessWidget {
                 children: controller.users.map((element) {
                   return GestureDetector(
                     child: ListTile(
-                      title: Text(element.login),
+                      title: Text(element.login ?? ""),
                     ),
                     onTap: () {
                       controller.navigateDetai(element);

@@ -5,37 +5,27 @@ import 'package:fluttergetx/repositories/search_repository.dart';
 import 'package:get/get.dart';
 
 class SearchRepoController extends GetxController {
-  SearchRepoController({SearchRepoRepository repo}) : _repo = repo;
+  SearchRepoController({required SearchRepoRepository repo}) : _repo = repo;
   final SearchRepoRepository _repo;
 
   var repos = <RepoModel>[].obs;
   var isLoading = false.obs;
 
-  searchRepo(String q) async {
+  search(String q) async {
     isLoading.value = true;
     final res = await _repo.search(q);
     repos.clear();
     this.repos.addAll(res);
     isLoading.value = false;
   }
+}
 
+extension NavigateHandle on SearchRepoController {
   navigateDetai(RepoModel repo) {
-    Get.to(DetailPage(
-      repo: repo,
-    ));
-  }
-
-  @override
-  void onInit() {
-    super.onInit();
-    print("===onInit=====");
-    isLoading.listen((loading) {
-      if (loading) {
-        Get.dialog(Center(child: CircularProgressIndicator()),
-            barrierDismissible: false);
-      } else {
-        Get.back();
-      }
-    });
+    Get.to(
+      () => DetailPage(
+        repo: repo,
+      ),
+    );
   }
 }

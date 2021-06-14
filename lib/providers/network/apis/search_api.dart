@@ -9,7 +9,7 @@ class SearchAPI implements APIRequestRepresentable {
   final SearchType type;
   final String q;
 
-  const SearchAPI._({this.type, this.q});
+  const SearchAPI._({required this.type, required this.q});
 
   const SearchAPI.repos(String q) : this._(type: SearchType.repos, q: q);
   const SearchAPI.users(String q) : this._(type: SearchType.users, q: q);
@@ -33,13 +33,7 @@ class SearchAPI implements APIRequestRepresentable {
     return HTTPMethod.get;
   }
 
-  Map<String, String> get headers =>
-      {HttpHeaders.contentTypeHeader: 'application/json'};
-
-  Map<String, String> get query {
-    return null;
-  }
-
+  @override
   Future request() {
     return APIProvider.instance.request(this);
   }
@@ -49,4 +43,11 @@ class SearchAPI implements APIRequestRepresentable {
 
   @override
   String get url => endpoint + path;
+
+  @override
+  Map<String, String>? get headers =>
+      {HttpHeaders.contentTypeHeader: 'application/json'};
+
+  @override
+  Map<String, String>? get query => null;
 }

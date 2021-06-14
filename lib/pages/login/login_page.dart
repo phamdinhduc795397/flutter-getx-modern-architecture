@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:fluttergetx/controllers/auth_controller.dart';
+import 'package:fluttergetx/controllers/auth/auth_controller.dart';
 import 'package:get/get.dart';
 
-class LoginPage extends GetWidget<AuthController> {
-  LoginPage({Key key}) : super(key: key);
+class LoginPage extends GetView<AuthController> {
+  LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder(
+      init: controller,
       builder: (_) {
         return Scaffold(
           appBar: AppBar(title: Text("Login")),

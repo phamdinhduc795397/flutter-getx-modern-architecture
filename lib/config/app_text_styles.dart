@@ -5,19 +5,13 @@ import 'package:flutter/material.dart';
 /// Example: bold18White05
 ///
 class AppTextStyle {
-  static TextStyle normal30Yellow = TextStyle(
+  static TextStyle title = TextStyle(
     fontSize: 30,
     color: Colors.yellow[800],
   );
 
-  static TextStyle normal20Yellow = TextStyle(
+  static TextStyle body = TextStyle(
     fontSize: 20,
     color: Colors.yellow[800],
-  );
-
-  static TextStyle bold16White = TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.bold,
-    color: Colors.white,
   );
 }
