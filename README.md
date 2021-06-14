@@ -22,9 +22,10 @@ samples, guidance on mobile development, and a full API reference.
     |-- main.dart
     |-- root.dart
     |-- config
+        |-- app_constants.dart
+        |-- app_colors.dart
+        |-- app_text_styles.dart
     |-- controllers
-        |-- bindings
-        |-- controller.dart
     |-- extensions
     |-- pages
     |-- providers
@@ -37,5 +38,5 @@ samples, guidance on mobile development, and a full API reference.
             |-- api_representable.dart
     |-- repositories
     |-- utilities
-    |-- widgets
+    |-- views
 ```
