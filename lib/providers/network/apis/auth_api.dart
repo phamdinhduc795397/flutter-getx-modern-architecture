@@ -10,9 +10,10 @@ class AuthAPI implements APIRequestRepresentable {
   final String username;
   final String repo;
 
-  const AuthAPI._({this.type, this.username, this.repo});
+  const AuthAPI._(
+      {required this.type, required this.username, required this.repo});
 
-  const AuthAPI.login({String username, String repo})
+  const AuthAPI.login({required String username, required String repo})
       : this._(type: AuthType.login, username: username, repo: repo);
 
   @override
@@ -38,14 +39,7 @@ class AuthAPI implements APIRequestRepresentable {
       {HttpHeaders.contentTypeHeader: 'application/json'};
 
   Map<String, String> get query {
-    switch (type) {
-      case AuthType.login:
-        return {HttpHeaders.contentTypeHeader: 'application/json'};
-      case AuthType.logout:
-        return {HttpHeaders.contentTypeHeader: 'application/json'};
-      default:
-        return null;
-    }
+    return {HttpHeaders.contentTypeHeader: 'application/json'};
   }
 
   @override

@@ -6,14 +6,14 @@ String repoModelToJson(RepoModel data) => json.encode(data.toJson());
 
 class PagingModel<T> {
   PagingModel({
-    this.totalCount,
-    this.incompleteResults,
-    this.items,
+    required this.totalCount,
+    required this.incompleteResults,
+    required this.items,
   });
 
-  int totalCount;
-  bool incompleteResults;
-  List<T> items;
+  final int totalCount;
+  final bool incompleteResults;
+  final List<T> items;
 
   @override
   factory PagingModel.fromJson(Map<String, dynamic> json) => PagingModel(
@@ -36,15 +36,15 @@ class RepoModel {
     this.language,
   });
 
-  int id;
-  String nodeId;
-  String name;
-  String fullName;
-  String avatarUrl;
-  DateTime createdAt;
-  DateTime updatedAt;
-  int watchersCount;
-  String language;
+  int? id;
+  String? nodeId;
+  String? name;
+  String? fullName;
+  String? avatarUrl;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  int? watchersCount;
+  String? language;
 
   factory RepoModel.fromJson(Map<String, dynamic> json) => RepoModel(
         id: json["id"],
@@ -64,8 +64,8 @@ class RepoModel {
         "name": name,
         "full_name": fullName,
         "avatar_url": avatarUrl,
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
+        "created_at": createdAt?.toIso8601String(),
+        "updated_at": updatedAt?.toIso8601String(),
         "watchers_count": watchersCount,
         "language": language,
       };

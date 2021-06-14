@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:fluttergetx/controllers/search_repo_controller.dart';
+import 'package:fluttergetx/controllers/search_repo/search_repo_controller.dart';
 import 'package:get/get.dart';
 
-class SearchRepoPage extends StatelessWidget {
-  SearchRepoPage({Key key, this.title}) : super(key: key);
+class SearchRepoPage extends GetView<SearchRepoController> {
+  SearchRepoPage({Key? key, required this.title}) : super(key: key);
   final String title;
   final textController = TextEditingController(text: "");
 
@@ -23,7 +23,7 @@ class SearchRepoPage extends StatelessWidget {
                   )),
                   TextButton(
                       onPressed: () {
-                        controller.searchRepo(textController.text);
+                        controller.search(textController.text);
                       },
                       child: Icon(Icons.search))
                 ],
@@ -33,7 +33,7 @@ class SearchRepoPage extends StatelessWidget {
                 children: controller.repos.toList().map((element) {
                   return GestureDetector(
                     child: ListTile(
-                      title: Text(element.fullName),
+                      title: Text(element.fullName ?? ""),
                     ),
                     onTap: () {
                       controller.navigateDetai(element);

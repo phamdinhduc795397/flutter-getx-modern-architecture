@@ -26,24 +26,24 @@ class UserModel {
     this.siteAdmin,
   });
 
-  String login;
-  int id;
-  String nodeId;
-  String avatarUrl;
-  String gravatarId;
-  String url;
-  String htmlUrl;
-  String followersUrl;
-  String followingUrl;
-  String gistsUrl;
-  String starredUrl;
-  String subscriptionsUrl;
-  String organizationsUrl;
-  String reposUrl;
-  String eventsUrl;
-  String receivedEventsUrl;
-  String type;
-  bool siteAdmin;
+  String? login;
+  int? id;
+  String? nodeId;
+  String? avatarUrl;
+  String? gravatarId;
+  String? url;
+  String? htmlUrl;
+  String? followersUrl;
+  String? followingUrl;
+  String? gistsUrl;
+  String? starredUrl;
+  String? subscriptionsUrl;
+  String? organizationsUrl;
+  String? reposUrl;
+  String? eventsUrl;
+  String? receivedEventsUrl;
+  String? type;
+  bool? siteAdmin;
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
         login: json["login"],

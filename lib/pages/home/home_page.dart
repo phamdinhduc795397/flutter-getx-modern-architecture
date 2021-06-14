@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttergetx/config/app_colors.dart';
-import 'package:fluttergetx/controllers/auth_controller.dart';
-import 'package:fluttergetx/controllers/bindings/search_repo_binding.dart';
-import 'package:fluttergetx/controllers/bindings/search_user_binding.dart';
-import 'package:fluttergetx/controllers/home_controller.dart';
+import 'package:fluttergetx/controllers/auth/auth_controller.dart';
+import 'package:fluttergetx/controllers/search_repo/search_repo_binding.dart';
+import 'package:fluttergetx/controllers/search_user/search_user_binding.dart';
 import 'package:fluttergetx/pages/search/search_repo_page.dart';
 import 'package:fluttergetx/pages/search/search_user_page.dart';
 import 'package:get/get.dart';
@@ -39,50 +38,38 @@ extension TabItem on TabType {
   }
 }
 
-class HomePage extends StatelessWidget {
-  HomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
-  final AuthController authController = Get.find();
-
-  final HomeController controller = HomeController();
-
+class HomePage extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeController>(
-      init: controller,
-      builder: (controller) {
-        return CupertinoTabScaffold(
-          tabBar: CupertinoTabBar(
-            items: TabType.values
-                .map((e) => BottomNavigationBarItem(icon: e.icon))
-                .toList(),
-            inactiveColor: AppColors.lightGray,
-            activeColor: AppColors.primary,
-          ),
-          tabBuilder: (context, index) {
-            final type = TabType.values[index];
-            switch (type) {
-              case TabType.home:
-                return Center(
-                  child: TextButton(
-                      onPressed: authController.logout, child: Text("Logout")),
-                );
-              case TabType.searchRepo:
-                SearchRepoBinding().dependencies();
-                return SearchRepoPage(
-                  title: type.title,
-                );
-              case TabType.searchUser:
-                SearchUserBinding().dependencies();
-                return SearchUserPage(title: type.title);
-              default:
-                return Center(
-                  child: Text(type.title),
-                );
-            }
-          },
-        );
+    return CupertinoTabScaffold(
+      tabBar: CupertinoTabBar(
+        items: TabType.values
+            .map((e) => BottomNavigationBarItem(icon: e.icon))
+            .toList(),
+        inactiveColor: AppColors.lightGray,
+        activeColor: AppColors.primary,
+      ),
+      tabBuilder: (context, index) {
+        final type = TabType.values[index];
+        switch (type) {
+          case TabType.home:
+            return Center(
+              child: TextButton(
+                  onPressed: controller.logout, child: Text("Logout")),
+            );
+          case TabType.searchRepo:
+            SearchRepoBinding().dependencies();
+            return SearchRepoPage(
+              title: type.title,
+            );
+          case TabType.searchUser:
+            SearchUserBinding().dependencies();
+            return SearchUserPage(title: type.title);
+          default:
+            return Center(
+              child: Text(type.title),
+            );
+        }
       },
     );
   }

@@ -1,5 +1,4 @@
-import 'package:fluttergetx/controllers/auth_controller.dart';
-import 'package:fluttergetx/providers/network/models/repo_model.dart';
+import 'package:fluttergetx/controllers/auth/auth_controller.dart';
 import 'package:fluttergetx/repositories/auth_repository.dart';
 import 'package:get/get.dart';
 
